@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form - Match</title>
+    <style>
+        @import "https://fonts.googleapis.com/css?family=Lato:400,600,700&subset=latin-ext";
+
+body {
+  background: #B1D8B7;
+  font-family: 'Lato';
+  padding: 10px 0;
+  margin: 80px;
+  font-size: 20px;
+  overflow-x: hidden;
+  min-width: 345px;
+}
+
+* {
+  box-sizing: border-box;
+}
+*:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* write your code below this line */
+form {
+	max-width: 1000px;
+	display: block;
+	width: 90%;
+	background-color: #1c1c1c;
+	padding: 25px 0;
+	margin: 40px auto;
+	color: #fff;
+	box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+fieldset {
+	border: none;
+	width: 90%;
+	margin: 10px auto;
+}
+legend {
+	margin: 30px 0 0;
+	font-size: 24px;
+	font-weight: 700;
+}
+.double-input {
+	margin: 20px auto;
+}
+.double-input > div {
+	float: left;
+	width: 48%;
+	margin: 0 1% 10px;
+} 
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+a {
+    text-decoration: none;
+}
+button {
+	height: 50px;
+	width: 300px;
+	background-color: #B1D8B7;
+	color: black;
+    font-weight: bold;
+	border: none;
+	cursor: pointer;
+	font-size:20px;
+	line-height: 50px;
+	font-family: 'Lato';
+	box-shadow: 0 0 10px #131313;
+	display: block;
+	margin: 0 auto;
+}
+input, select {
+	width: 100%;
+	color: #fff;
+	background-color: transparent;
+	border: 1px solid #a9a9a9;
+	padding: 8px;
+	height: 35px;
+}
+.date-select > select {
+	width: 47%;
+}
+.date-select > select:first-of-type {
+	margin-right: 3%;
+}
+input:focus, 
+select:focus {
+	border: 1px solid #B1D8B7;
+}
+input:valid, 
+select:valid {
+	border: 1px solid #B1D8B7;
+}
+option {
+	color: #000;
+	background-color: #ececec;
+}
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Personal data</legend>
+            <div class="double-input">
+                <div class="form-input-container">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" placeholder="Your Name" minlength="3" required>
+                </div>
+                <div class="form-input-container">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Research Details</legend>
+            <div class="double-input">
+                <div class="form-input-container">
+                    <label for="pubmed">PubMed ID *</label>
+                    <input type="text" id="pubmed" placeholder="PubMed ID" required>
+                </div>
+                <div class="form-input-container">
+                    <label for="category">ncRNA Category *</label>
+                    <input type="text" id="category" placeholder="ncRNA Category" required>
+                </div>
+            </div>
+            <div class="double-input">
+                <div class="form-input-container">
+                    <label for="symbol">ncRNA Symbol *</label>
+                    <input type="text" id="symbol" placeholder="ncRNA Symbol" required>
+                </div>
+                <div class="form-input-container">
+                    <label for="species">Species *</label>
+                    <input type="text" id="species" placeholder="Species" required>
+                </div>
+            </div>
+            <div class="double-input">
+                <div class="form-input-container">
+                    <label for="disease">Disease Name *</label>
+                    <input type="text" id="disease" placeholder="Disease Name" required>
+                </div>
+                <div class="form-input-container">
+                    <label for="ontology">Disease Ontology/MeSH ID *</label>
+                    <input type="text" id="ontology" placeholder="Disease Ontology/MeSH ID" required>
+                </div>
+            </div>
+            <div class="double-input">
+                <div class="form-input-container">
+                    <label for="sample">Sample</label>
+                    <input type="text" id="sample" placeholder="Sample">
+                </div>
+                <div class="form-input-container">
+                    <label for="pattern">Dysfunction Pattern</label>
+                    <input type="text" id="pattern" placeholder="Dysfunction Pattern">
+                </div>
+            </div>
+            <div class="double-input">
+                <div class="form-input-container">
+                    <label for="method">Validated Method</label>
+                    <input type="text" id="method" placeholder="Validated Method">
+                </div>
+                <div class="form-input-container">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" placeholder="Description">
+                </div>
+            </div>
+            <div class="form-input-container">
+                <label for="causality">Causality</label>
+                <input type="text" id="causality" placeholder="Causality">
+            </div>
+        </fieldset>
+        <a href="#"><button type="button">Submit a request</button></a>
+    </form>
+    
+    </body>
+</html>

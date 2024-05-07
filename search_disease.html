@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+ @import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
+ * {
+	 -webkit-font-smoothing: antialiased;
+	 /* color: #4c9b7a */
+}
+ :root {
+	 --border-radius: 10px;
+}
+
+
+/* Style for the table container */
+.rwd-table {
+    margin: 1em auto; /* Center the table horizontally */
+    /* min-width: 600px; */
+    width: 100%; /* Adjust the width as needed */
+    max-width: 1500px; 
+    overflow-x: auto; /* Add horizontal scrollbar when needed */
+    font-size: 22px;
+    
+}
+
+.rwd-table td {
+    border-top: 1px solid #1c1c1c;
+    /* width: 100%; */
+    width: 100%;
+}
+
+.rwd-table th,
+.rwd-table td {
+    margin: 0.5em 1em;
+    padding: 0.7em;
+    text-align: left;
+    /* width: 90%; */
+}
+
+.rwd-table td {
+    background: #ffff;
+}
+
+.rwd-table th {
+    background: #4c9b7a;
+    color: black;
+    font-weight: bold;
+    /* width: 90%; */
+}
+
+.rwd-table td:before {
+    content: attr(data-th)": ";
+    font-weight: bold;
+}
+
+
+
+
+@media screen and (min-width: 480px) {
+    .rwd-table td {
+        display: table-cell;
+        padding: 1em;
+    }
+    .rwd-table td:before {
+        display: none;
+    }
+}
+
+ body, html {
+	 /* background: #e2e9f4; */
+     background: #1c1c1c;
+  display: grid;
+  width: 95vw; /* Set the maximum width to 90% of the viewport width */
+  margin: 20px;
+  grid-template: 1fr / 100%;
+  place-items: center;
+}
+ .Card {
+    margin-top: 40px;
+	 padding: 1px;
+	 border-radius: var(--border-radius);
+	 background: #1c1c1c;
+     /* background: linear-gradient(-67deg, rgba(176, 223, 188, .7), rgba(255, 255, 255, .8)); */
+	 overflow: hidden;
+	 box-shadow: -2px -2px 6px rgba(255, 255, 255, .6), 2px 2px 12px #c8d8e7; 
+     /* box-shadow: -2px -2px 6px rgba(255, 255, 255, .6), 2px 2px 12px #4c9b7a; */
+	 width: 1200px;
+}
+ .CardInner {
+	 padding: 16px 16px;
+	 background-color: #1c1c1c;
+	 border-radius: var(--border-radius);
+}
+ .container {
+	 display: flex;
+}
+ .Icon {
+	 min-width: 46px;
+	 min-height: 46px;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 border-radius: var(--border-radius);
+	 margin-right: 12px;
+	 box-shadow: -2px -2px 6px rgba(255, 255, 255, .6), 2px 2px 12px #c8d8e7   ;
+}
+ .Icon svg {
+	 transform: translate(-1px, -1px);
+}
+ label {
+	 font-family: "Hind", sans-serif;
+	 display: block;
+     font-weight: bold;
+	 color: #4c9b7a;
+	 margin-bottom: 12px;
+	 background: #1c1c1c;
+     /* background: linear-gradient(-67deg, rgba(176, 223, 188, .7), rgba(255, 255, 255, .8)); */
+	 -webkit-background-clip: text;
+	 -webkit-text-fill-color: transparent;
+}
+ .InputContainer {
+	 width: 100%;
+}
+ input {
+	 background-color: #1c1c1c;
+	 padding: 16px 32px;
+	 border: none;
+	 display: block;
+	 font-family: 'Orbitron', sans-serif;
+	 font-weight: 1000;
+	 color: #fff;
+	 -webkit-appearance: none;
+	 transition: all 240ms ease-out;
+	 width: 100%;
+     font-size: 25px;
+     
+}
+ input::placeholder {
+    
+	 color: #4c9b7a;
+     font-size: 25px;
+     font-weight: bold;
+}
+ input:focus {
+	 outline: none;
+	 color: #6d7f8f;
+	 background-color: #eff5fa;
+}
+ .InputContainer {
+	 --top-shadow: inset 1px 1px 3px #c5d4e3, inset 2px 2px 6px #c5d4e3;
+	 --bottom-shadow: inset -2px -2px 4px rgba(255, 255, 255, .7);
+	 position: relative;
+	 border-radius: var(--border-radius);
+	 overflow: hidden;
+}
+ .InputContainer:before, .InputContainer:after {
+	 left: 0;
+	 top: 0;
+	 display: block;
+	 content: "";
+	 pointer-events: none;
+	 width: 100%;
+	 height: 100%;
+	 position: absolute;
+    
+}
+ .InputContainer:before {
+	 box-shadow: var(--bottom-shadow);
+}
+ .InputContainer:after {
+	 box-shadow: var(--top-shadow);
+}
+
+        h1 {
+          font-size: 32px;
+          margin: 0;
+          text-align: center;          
+        }
+
+
+/* .companies {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+} */
+
+.companies {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            justify-content: center; /* Center the grid horizontally */
+            width: 60%;
+        }
+
+
+.company {
+  font-family: "Hind", sans-serif;
+  padding: 20px;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.95));
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+.company:hover {
+  transform: scale(1.05);
+}
+
+.company h2{
+  font-size: 25px;
+  margin: 0;
+  margin-bottom: 10px;
+  color: #333; /* Adjust text color */
+}
+
+.company p {
+  font-size: 20px;
+  margin: 0;
+  color: #555; /* Adjust text color */
+}
+
+.know-more-container {
+  margin-top: 15px;
+}
+
+.know-more {
+  font-size: 16px;
+  color: #fff;
+  background: #acbdce; /* Adjust the background color */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  
+}
+
+.know-more:hover {
+  background: #4c9b7a; /* Adjust the background color on hover */
+}
+
+
+/* .know-more-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+} */
+
+.hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 10px 0;
+}
+
+.know-more a {
+    font-family: "Hind", sans-serif;
+  color: black; /* Change the color to your preferred one */
+  /* background-color: #007bff; Change the background color to your preferred one */
+  padding: 0 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+}
+.navbar {
+  background-color: #1c1c1c;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 10px;
+  width: 100%;
+  margin-top: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.back-button svg {
+  width: 50px;
+  height: 50px;
+}
+
+.profile-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.toggle-buttons {
+    margin: 20px;
+}
+
+/* .toggle-buttons button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4c9b7a;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+} */
+
+/* .toggle-buttons button:hover {
+    background-color: #4ca78b;
+} */
+/* Style for the search content */
+/* #lncrna-search-content,
+#disease-search-content,
+#drug-search-content {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#lncrna-search-content h2,
+#disease-search-content h2,
+#drug-search-content h2 {
+    margin-top: 0;
+} */
+
+
+
+.btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            color: #ebecf0;
+            background-color: #4c9b7a;
+            border: 3px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px;
+        }
+        
+        .btn-1::before {
+            content: '';
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background-color: #1c1c1c;
+            transition: 0.3s ease-out;
+        }
+        
+        .btn-1 span {
+            position: relative;
+            z-index: 1;
+            transition: 0.2s 0.1s;
+            /* border: 1px solid rgb(28, 31, 30); */
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        
+        .btn-1:hover span {
+            color: rgb(28, 31, 30);
+            transition: 0.2s 0.1s;
+        }
+        
+        /* 1.hover-filled-slide-down */
+        .btn.hover-filled-slide-down::before {
+            bottom: 0; left: 0; right: 0; 
+            height: 100%; width: 100%;
+        }
+        
+        .btn.hover-filled-slide-down:hover::before {
+            height: 0%;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button class="back-button" onclick="goBack()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="toggle-buttons">
+            <a href="search.html" class="btn btn-1 hover-filled-slide-down"><span>Non-Coding RNAs</span></a>
+            <a href="search_disease.html" class="btn btn-1 hover-filled-slide-down"><span>Diseases</span></a>
+            <a href="search_drugs.html" class="btn btn-1 hover-filled-slide-down"><span>Drugs</span></a>
+        </div>
+        <button class="profile-button" onclick="goToProfile()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="22"></line>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="4.22" y1="17.78" x2="5.64" y2="16.36"></line>
+              <line x1="19.78" y1="17.78" x2="18.36" y2="16.36"></line>
+            </svg>
+          </button>
+    </div>
+
+
+    <div class="Card">
+        <div class="CardInner">
+            <form class="search-box">
+                <div class="container">
+                    <div class="Icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#657789" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                    </div>
+                    <div class="InputContainer">
+                        <input type="text" id="search" placeholder="Enter the Disease name..."/>
+                        <button id="searchButton" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="rwd-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Disease Name</th>
+                    <th>Disease Family</th>
+                    <!-- <th>Chromosome</th>
+                    <th>Start Position</th>
+                    <th>End Position</th>
+                    <th>Strand</th>
+                    <th>Length</th> -->
+                </tr>
+            </thead>
+            <tbody id="lnrna-table">
+                <!-- Table rows will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+      <!-- <div id="companies-container" class="companies"></div> -->
+      
+
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const lncrnaTableBody = document.getElementById('lnrna-table');
+            const searchForm = document.querySelector('.search-box');
+    
+            // Sample list of LNCRNAs and their data
+            const lncrnaData = [
+            { "Disease ID": "Carcinoma", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma arising in nasal papillomatosis", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma of supraglottis", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma Basal Cell", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma cervix uteri", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma ex pleomorphic adenoma", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma ex pleomorphic adenoma of lacrimal gland", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma Gallbladder", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma in situ of anal canal", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma in situ of breast", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma in situ of cervix", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma in situ of esophagi", "Disease Name": "Carcinoma"},
+            { "Disease ID": "Carcinoma in situ of liver and biliary system", "Disease Name": "Carcinoma"},
+
+            { "Disease ID": "Anemia", "Disease Name": "Anemia"},
+            { "Disease ID": "Anemia of prematurity", "Disease Name": "Anemia"},
+            { "Disease ID": "Anemia due to protein deficiencies", "Disease Name": "Anemia"},
+            { "Disease ID": "ANEMIA HEMOLYTIC", "Disease Name": "Anemia"},
+            { "Disease ID": "Anemia hypochromic with iron loading", "Disease Name": "Anemia"},
+            { "Disease ID": "ANEMIA HYPOCHROMIC", "Disease Name": "Anemia"},
+            { "Disease ID": "ANEMIA LEUKOERYTHROBLASTIC", "Disease Name": "Anemia"},
+            { "Disease ID": "ANEMIA MACROCYTIC", "Disease Name": "Anemia"},
+            { "Disease ID": "Anemia neonatal", "Disease Name": "Anemia"},
+            { "Disease ID": "ANEMIA NORMOCYTIC", "Disease Name": "Anemia"},
+            { "Disease ID": "ANEMIA PERNICIOUS", "Disease Name": "Anemia"},
+            { "Disease ID": "Anemia sideroblastic and spinocerebellar ataxia	X-linked sideroblastic anemia with ataxia", "Disease Name": "Anemia"},
+            { "Disease ID": "Anemia with multinucleated erythroblasts	Congenital dyserythropoietic anemia type III", "Disease Name": "Anemia"},
+            ];
+    
+            // Function to populate the table with LNCRNA data
+            function populateLNCRNATable(data) {
+                lncrnaTableBody.innerHTML = ''; // Clear the table body
+                data.forEach(entry => {
+                    const row = document.createElement('tr');
+                    const idCell = document.createElement('td');
+                    idCell.textContent = entry['Disease ID'];
+                    const LNCCell = document.createElement('td');
+                    LNCCell.textContent = entry['Disease Name'];
+                    // const nameCell = document.createElement('td');
+                    // nameCell.textContent = entry['Chromosome'];
+                    // const startCell = document.createElement('td');
+                    // startCell.textContent = entry['Start Position'];
+                    // const endCell = document.createElement('td');
+                    // endCell.textContent = entry['End Position'];
+                    // const strandCell = document.createElement('td');
+                    // strandCell.textContent = entry['Strand'];
+                    // const lenCell = document.createElement('td');
+                    // lenCell.textContent = entry['Length'];
+                    row.appendChild(idCell);
+                    row.appendChild(LNCCell);
+                    // row.appendChild(nameCell);
+                    // row.appendChild(startCell);
+                    // row.appendChild(endCell);
+                    // row.appendChild(strandCell);
+                    // row.appendChild(lenCell);
+                    lncrnaTableBody.appendChild(row);
+                });
+            }
+    
+            // Define the searchLNCRNA function
+            // Define the searchLNCRNA function
+            function searchLNCRNA() {
+    // Get the search query
+    const searchInput = document.getElementById('search').value.toLowerCase();
+    console.log("Search Input:", searchInput);
+
+    // Filter the LNCRNA data based on the search query
+    const filteredData = lncrnaData.filter(entry =>
+        entry['Disease ID'].toLowerCase().includes(searchInput) ||
+        entry['Disease Name'].toLowerCase() === searchInput 
+        // entry['Chromosome'].toLowerCase().includes(searchInput) ||
+        // entry['Start Position'].toLowerCase().includes(searchInput) ||
+        // entry['End Position'].toLowerCase().includes(searchInput) ||
+        // entry['Strand'].toLowerCase().includes(searchInput) ||
+        // entry['Length'].toLowerCase().includes(searchInput)
+    );
+    console.log("Filtered Data:", filteredData);
+
+    // Populate the table with filtered data
+    populateLNCRNATable(filteredData);
+}
+
+
+            // Add event listener for form submission
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission behavior
+                searchLNCRNA(); // Call the search function
+            });
+    
+            // Populate the table with initial LNCRNA data
+            populateLNCRNATable(lncrnaData);
+        });
+    </script>
+    
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

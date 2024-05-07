@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Input Animation | CodingNepal</title>
+      <link rel="stylesheet" href="style.css">
+      <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+.wrapper{
+  margin-top: 300px;
+  width: 1050px;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+.wrapper .input-data{
+  height: 80px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px; /* Add margin-bottom for spacing between input fields */
+}
+.wrapper .input-data input{
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 25px;
+  border-bottom: 2px solid silver;
+}
+.input-data input:focus ~ label,
+.input-data input:valid ~ label{
+  transform: translateY(-40px);
+  font-size: 25px;
+  color: #4c9b7a;
+}
+.wrapper .input-data label{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: grey;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.input-data .underline{
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+}
+.input-data .underline:before{
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: #4c9b7a;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-data input:focus ~ .underline:before,
+.input-data input:valid ~ .underline:before{
+  transform: scaleX(1);
+}
+/* Add styles for the button */
+.red {
+  height: 60px;
+  width: 100%;
+  background-color: #4c9b7a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  transition: background-color 0.3s ease;
+}
+.red:hover {
+  background-color: #3d7e63; /* Darker shade on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+	width: 1500px;
+	height: 50px;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#popupContent {
+    text-align: center;
+}
+.toggle-buttons {
+    margin: 20px;
+}
+
+.btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            color: #ebecf0;
+            background-color: #75dab4;
+            border: 3px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px;
+        }
+        
+        .btn-1::before {
+            content: '';
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background-color: #1c1c1c;
+            transition: 0.3s ease-out;
+        }
+        
+        .btn-1 span {
+            position: relative;
+            z-index: 1;
+            transition: 0.2s 0.1s;
+            /* border: 1px solid rgb(28, 31, 30); */
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        
+        .btn-1:hover span {
+            color: rgb(28, 31, 30);
+            transition: 0.2s 0.1s;
+        }
+        
+        /* 1.hover-filled-slide-down */
+        .btn.hover-filled-slide-down::before {
+            bottom: 0; left: 0; right: 0; 
+            height: 100%; width: 100%;
+        }
+        
+        .btn.hover-filled-slide-down:hover::before {
+            height: 0%;
+        }
+
+
+        .navbar {
+  background-color: #1c1c1c;
+  color: #fff;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Vertically center items */
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999; /* Ensure it's above other content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+      </style>
+   </head>
+   <body>
+
+    <div class="navbar">
+
+        <div class="toggle-buttons">
+            <a href="association_disease.html" class="btn btn-1 hover-filled-slide-down"><span>LncRNA - Disease Association Prediction</span></a>
+            <a href="association_drug.html" class="btn btn-1 hover-filled-slide-down"><span>LncRNA - Drug Association Prediction</span></a>
+            <!-- <a href="search_drugs.html" class="btn btn-1 hover-filled-slide-down"><span>Drugs</span></a> -->
+        </div>
+        
+    </div>
+    
+      <div class="wrapper">
+         <div class="input-data">
+            <input type="text" id="lncrnaInput" required>
+            <div class="underline"></div>
+            <label>Enter LncRNA ID</label>
+         </div>
+         <div class="input-data">
+            <input type="text" id="diseaseInput" required>
+            <div class="underline"></div>
+            <label>Enter Disease</label>
+         </div>
+         
+         <button class="red" type="button" onclick="openPopup()">Predict Association</button>
+      </div>
+
+      <div id="overlay" class="overlay">
+        <div class="popup">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <div id="popupContent"></div> <!-- Placeholder for prediction score -->
+        </div>
+    </div>
+
+
+    <script>
+
+
+
+        var validNames = ['HOTAIR', 'HOTTIP', 'HOTAIRM1', 'Glioblastoma', 'Retinoblastoma', 'Lupus Erythematosus, Systemic', 'Liver Neoplasms', 'Medulloblastoma', 'Leukemia', 'Glioma', 'Keloid', 'Squamous Cell Carcinoma of Head and Neck', 'Neuroendocrine Tumors', 'skin melanoma', 'Breast Neoplasms', 'RNA, Long Noncoding', 'Urinary Bladder Neoplasms', 'Colonic Neoplasms', 'Coronary Artery Disease', 'Esophageal Squamous Cell Carcinoma', 'Prostatic Neoplasms', 'Lung Neoplasms', 'Carcinoma, Ductal, Breast', 'pancreatic ductal adenocarcinoma', 'Esophageal Neoplasms', 'pancreatic adenocarcinoma', 'Ovarian Neoplasms', 'Uterine Cervical Neoplasms', 'Spinal Cord Injuries', 'Leukemia, Myelogenous, Chronic, BCR-ABL Positive', 'Primary Ovarian Insufficiency', 'LEF1-AS1', 'Leukemia, Lymphocytic, Chronic, B-Cell', 'Subarachnoid Hemorrhage', 'Parkinson Disease', 'esophageal carcinoma', 'Thyroid Cancer, Papillary', 'gastric adenocarcinoma', 'Arthritis, Rheumatoid', 'Psoriasis', 'Sarcoma, Synovial', 'Cholangiocarcinoma', 'Triple Negative Breast Neoplasms', 'Pre-Eclampsia', 'Stroke', 'Nasopharyngeal Neoplasms', 'transitional cell carcinoma', 'Adenocarcinoma of Lung', 'Lupus Erythematosus, Discoid', 'Atherosclerosis', 'Demyelinating Diseases', 'lung non-small cell carcinoma', 'Diabetes Mellitus, Type 2', 'Ependymoma', 'Osteoarthritis', 'Thyroid Neoplasms', 'Abortion, Habitual', 'Endometriosis', 'Multiple Myeloma', 'Nasopharyngeal carcinoma', 'Stomach Neoplasms', 'Diabetic Nephropathies', 'Pancreatic Neoplasms', 'Osteosarcoma', 'Carcinoma, Renal Cell', 'Adrenocortical Carcinoma', 'Carcinoma, Non-Small-Cell Lung', 'Endometrial Neoplasms', 'Skin Neoplasms', 'Leukemia, Myeloid, Acute', 'Carcinoma, Hepatocellular', 'Mouth Neoplasms', 'Diabetic Retinopathy', 'Colorectal Neoplasms', 'Lung Diseases', 'Non-alcoholic Fatty Liver Disease', 'Pulmonary Disease, Chronic Obstructive', 'Thyroid Carcinoma, Anaplastic', 'stomach carcinoma'];
+        // var lncrnaName = document.getElementById('lncrnaInput').value.trim();
+        // var diseaseName = document.getElementById('diseaseInput').value.trim();
+
+        // if (!validNames.includes(lncrnaName)) {
+        //     alert('Error: Invalid LncRNA Name');
+        //     return;
+        // }
+        function openPopup() {
+            document.getElementById("overlay").style.display = "block";
+            // Perform prediction logic here
+            // For example, simulate a delay with setTimeout
+            setTimeout(function() {
+                showPredictionScore(); // Display prediction score in popup
+            }, 2000); // Close popup after 2 seconds (adjust as needed)
+        }
+        
+        function closePopup() {
+            document.getElementById("overlay").style.display = "none";
+        }
+        
+        
+        function showPredictionScore() {
+            // Get the input values
+            var lncrnaName = document.getElementById('lncrnaInput').value;
+            var diseaseName = document.getElementById('diseaseInput').value;
+
+            // Perform prediction logic here
+            // For now, let's just display a random score as an example
+            var score = 0.6 + Math.random() * 0.1;
+
+            // Display the prediction score
+            var scoreDisplay = document.getElementById("popupContent");
+            scoreDisplay.innerHTML = "Association Score for " + lncrnaName + " - " + diseaseName + ": " + score.toFixed(4);
+        }
+
+    </script>
+   </body>
+</html>
